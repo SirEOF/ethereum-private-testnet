@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "* Starting node-bob ..."
+
+/usr/bin/geth --identity "Bob" --rpc --rpcaddr "0.0.0.0" --rpcport "11002" --rpccorsdomain "*" \
+--datadir "/data/node-bob" --port "30304" --nodiscover --rpcapi "db,eth,net,web3" \
+--networkid 1900 --nat "any"
+
+s6-svc -d /var/run/s6/services/node-bob

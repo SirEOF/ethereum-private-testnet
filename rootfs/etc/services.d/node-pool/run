@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "* Starting node-pool ..."
+
+/usr/bin/geth --identity "Pool" --rpc --rpcaddr "0.0.0.0" --rpcport "11001" --rpccorsdomain "*" \
+--datadir "/data/node-pool" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" \
+--networkid 1900 --nat "any" --bootnodes "enode://6039b6518cd7d311587159742f3300c9f9a03947b5fa18e9b4837f6a27e5460c9e1c8bf79e04c00461ffc7e70fa833d048e0e6ee5cf35c913a8e480ee4cfe760@[::]:30304?discport=0"
+
+s6-svc -d /var/run/s6/services/node-pool
