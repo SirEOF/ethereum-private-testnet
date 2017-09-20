@@ -3,7 +3,9 @@
 echo "* Starting node-pool ..."
 
 /usr/bin/geth --identity "Pool" --rpc --rpcaddr "0.0.0.0" --rpcport "11001" --rpccorsdomain "*" \
---datadir "/data/node-pool" --port "30303" --nodiscover --rpcapi "db,eth,net,web3" \
---networkid 1900 --nat "any" --bootnodes "enode://6039b6518cd7d311587159742f3300c9f9a03947b5fa18e9b4837f6a27e5460c9e1c8bf79e04c00461ffc7e70fa833d048e0e6ee5cf35c913a8e480ee4cfe760@[::]:30304?discport=0"
+--datadir "/data/node-pool" --port "30303" --nodiscover --rpcapi "db,eth,net,web3,admin,personal" \
+--nodekeyhex "768f2d4c3dcf206e45a5a344f648e4ef1692634235080f58b47d6e30b7f9dba3" \
+--unlock "0xfbecb64c03c1f2cf36f39b6bfe4024f019292cbe" --password /data/pw.txt \
+--networkid 1900 --bootnodes enode://31703fc566f170306845fbf227a089a060117fa12baade6512a69b8b54cf2ad650a54e9db05931c9a017c48909c3e99c8ed65af06b88dfd8d382f8e981faa9cb@[::]:30304
 
 s6-svc -d /var/run/s6/services/node-pool

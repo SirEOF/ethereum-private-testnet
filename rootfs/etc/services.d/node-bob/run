@@ -3,7 +3,9 @@
 echo "* Starting node-bob ..."
 
 /usr/bin/geth --identity "Bob" --rpc --rpcaddr "0.0.0.0" --rpcport "11002" --rpccorsdomain "*" \
---datadir "/data/node-bob" --port "30304" --nodiscover --rpcapi "db,eth,net,web3" \
---networkid 1900 --nat "any"
+--datadir "/data/node-bob" --port "30304" --nodiscover --rpcapi "db,eth,net,web3,admin,personal" \
+--nodekeyhex "e0e1f052ea0cd9df43d1c0a7035e871d152cadedb85b740d7e97f867e55ff462" \
+--unlock "0x3cb81ed948a6ec3eedddcf1576d406a19d44ad73" --password /data/pw.txt \
+--networkid 1900
 
 s6-svc -d /var/run/s6/services/node-bob
