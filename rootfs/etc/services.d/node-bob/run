@@ -4,8 +4,7 @@ echo "* Starting node-bob ..."
 
 /usr/bin/geth --identity "Bob" --rpc --rpcaddr "0.0.0.0" --rpcport "11002" --rpccorsdomain "*" \
 --datadir "/data/node-bob" --port "30304" --nodiscover --rpcapi "db,eth,net,web3,admin,personal" \
---nodekeyhex "e0e1f052ea0cd9df43d1c0a7035e871d152cadedb85b740d7e97f867e55ff462" \
 --unlock "0x3cb81ed948a6ec3eedddcf1576d406a19d44ad73" --password /data/pw.txt \
---networkid 1900
+--networkid 1900 --verbosity 5 --bootnodes enode://31703fc566f170306845fbf227a089a060117fa12baade6512a69b8b54cf2ad650a54e9db05931c9a017c48909c3e99c8ed65af06b88dfd8d382f8e981faa9cb@127.0.0.1:30303
 
 s6-svc -d /var/run/s6/services/node-bob
